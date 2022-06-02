@@ -1,28 +1,39 @@
 """
 
 """
+def solution(a,b):
 
-a=5
-b=3
-s1=('a'*a)+('b'*b)
-s1=list(s1)
-k=1
-for i in range(len(s1)):
-    next=0
-    while s1[i]==s1[next]:
-        print('while')
-        if i==next:
-            print('cont')
-            next+=1
-            continue
+    # s1 = list(s1)
+    cntr=1
+    if a==b:
+        s1=''
+        for i in range(a):
+            s1+='ab'
+    else:
+        if a>b:
+            s1 = ('a' * a) + ('b' * b)
+
         else:
-            print('next',next)
-            next+=1
-        if next>=3:
-            print('swap',s1[next],next,s1[next+1],next+1)
-            s1[i],s1[next]=s1[next],s1[i]
-            print(s1)
+            s1 = ('b' * b) + ('a' * a)
+        s1=list(s1)
+        for i in range(len(s1)):
+            cntr = 1
+            for k in range(len(s1)-1 ):
+               # print(s1[k] , s1[k + 1],cntr)
+                if s1[k] == s1[k + 1]:
+                    cntr += 1
+                else:
+                    if cntr >= 3:
+                        s1[k], s1[k + 1] = s1[k + 1], s1[k]
+                        break;
+                    else:
+                        cntr = 1
 
+    return ''.join(s1)
+
+
+
+print(solution(3,5))
 
 
 
